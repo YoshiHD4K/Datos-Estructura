@@ -1,0 +1,30 @@
+typedef ArbolABB:RECORD
+    clave:int
+    *izq:ArbolABB
+    *der:ArbolABB
+
+*raiz, *rec ArbolABB;
+x:Boolean
+elem:int
+
+Function Inserción(*rec:ArbolABB, elem:int):Boolean
+begin
+
+    If rec == NULL then
+        rec= new(ArbolABB)
+        rec.clave = elem
+        rec.izq=NULL
+        rec.der=NULL
+    else
+        If elem < rec.clave then
+            Inserción(rec.izq, elem);
+        else If elem > rec.clave then
+            Inserción(rec.der, elem);
+    return(rec);
+end Function
+
+Main()
+begin
+    Rec=raiz
+    x=Busqueda(rec,elem)
+end 

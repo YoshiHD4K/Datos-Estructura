@@ -1,0 +1,10 @@
+Arbol AVL - variante de ABB
+
+Creadores 
+Adelson - Velskii
+Landis
+
+Factor de equilibrio =  AlturaSubArbolDer - AlturaSubArbolIzq
+
+F(e) = 0, 1 o -1 : esta balanceado
+PD: debe de decirlo por cada nodo

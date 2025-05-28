@@ -1,0 +1,27 @@
+punteros a usar en Arbol
+
+    raiz, rec, nuevo
+
+
+typedef Arbol = RECORD
+Begin
+
+    clave: datos;
+    *izq, *c1, *c2, *c3, *c4, *der : Arbol; //se coloca izq, der y tantos centros (c1, c2, etc) como se necesiten
+
+End RECORD
+
+function postorder(raiz) {
+
+    if raiz == NULL
+        return;
+
+       
+    postorder(raiz.izq)
+    postorder(raiz.der)
+    visitar() 
+    return;
+    
+    si
+    
+}

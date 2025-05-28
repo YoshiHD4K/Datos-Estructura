@@ -1,0 +1,61 @@
+Se puede definir como una serie de pasos básicos, o pasos base, y un paso recursivo que vuelve a llamar al programa.
+Existen ciertas estructuras cuya definición es recursiva, como las listas y los arboles. Looss algoritmos usados en los arboles suelen ser recursivos
+
+1. Paso base o condicion de parada
+
+Function A (int n)
+    begin
+        if (n==0) then
+            return();
+        else 
+            return A(n-1);
+    end.Function
+
+Main()
+    begin
+
+        x=a(0)
+    
+    end
+
+La tecnica de back tracking consiste en enumerar sistemáticamente las alternativas que existen en cada momento, para dar con la solución a un problema. Se prueba una guardando en memoria el resto de las alternativas
+Si no se llega a la solucion, damos marcha atras y probamos otra alternativa
+
+
+Function potencia(n):integer
+    begin
+        if n==0 then
+            return(1);
+        else
+            return a * potencia(a, n-1);
+    end
+
+
+
+Function factorial(int n)
+    begin
+        if n <= 1 then
+            return(1);
+        else
+            return n * factorial(n-1);
+    end
+
+
+realice un programa con recursion indirecta, que permita determinar si un numero es par o impar
+
+
+Function esPar(int n)
+    begin
+        if n%2 == 0 then
+            return true
+        else
+            return esImpar(n)
+    end
+
+Function esImpar(int n)
+    begin
+        if n%2 != 0then
+            return false
+        else
+            return esPar(n)
+    end

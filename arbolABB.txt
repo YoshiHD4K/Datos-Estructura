@@ -1,0 +1,37 @@
+ABB
+
+Todos los nodos que están a la izquierda de un nodo cualquiera, 
+deben de ser menores que los que están a la derecha
+
+
+Busquedas
+
+typedef ArbolABB:RECORD
+    clave:int
+    *izq:ArbolABB
+    *der:ArbolABB
+
+*raiz, *rec ArbolABB;
+x:Boolean
+elem:int
+
+Function Busqueda(*rec:ArbolABB, elem:int):Boolean
+begin
+
+    If rec == NULL then
+        return false;
+    else
+        If elem < rec.clave then
+            Busqueda(rec.izq, elem);
+        else If elem > rec.clave then
+            Busqueda(rec.der, elem);
+        else
+            return true
+
+end Function
+
+Main()
+begin
+    Rec=raiz
+    x=Busqueda(rec,elem)
+end 

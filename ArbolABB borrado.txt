@@ -1,0 +1,17 @@
+Function Borrado(*rec:ArbolABB, elem:int):Boolean
+begin
+
+
+
+end Function
+
+
+PASOS A SEGUIR
+
+1) Busqueda
+2) si lo encontramos
+2.1) si encontramos hoja, borramos y lito
+2.2) si el señor tiene un hijo, remplace al nodo por su hijo
+2.3) si tiene dos hijos,
+2.3.1) Puedes buscar al menor de los mayores y reemplazar
+2.3.2) Puedes buscar al mayor de los menores y reemplazar
