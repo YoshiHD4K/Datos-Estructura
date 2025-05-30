@@ -31,6 +31,7 @@ main()
         cout << "---------------------------------------------------------" << endl;
         do
         {
+        
 
             cout << "Cuantas veces desea insertar un dato: ";
             cin >> NumVeces;
@@ -40,8 +41,7 @@ main()
             }
 
         } while (NumVeces <= 0);
-        cout << "---------------------------------------------------------" << endl
-             << endl;
+        cout << "---------------------------------------------------------" << endl  <<  endl;
 
         while (NumVeces > 0)
         {

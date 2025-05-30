@@ -9,12 +9,14 @@
     "cantidadtotal",
     "desapilado",
     "desapilar",
+    "desbalanceado",
     "espaciadora",
     "Hembrasporfecha",
     "kbhit",
     "numerotlf",
     "numrand",
-    "raiz"
+    "raiz",
+    "subarbol"
   ],
   "files.associations": {
     "notas": "plaintext",

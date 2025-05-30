@@ -1,0 +1,60 @@
+Balanceo
+
+Caso 1) Insercion de una hoja izquierda en el subarbol izquierdo (izq - izq)
+
+    Rotacion simple a la derecha
+
+    Paso 1 : sustituir R por izq, a la izq pongo el hijo izquierdo de izq, y a su derecha pongo R
+
+    Paso 2 : R va a tener a hijo derecho a su propio hijo derecho, y su hijo izq va a hacer el hijo derecho de su propio hijo izquierdo
+
+    c:\Users\tomyr\Downloads\Quick Share\IMG_20250529_110330_307.jpg
+
+    c:\Users\tomyr\Downloads\Quick Share\IMG_20250529_111046_918.jpg
+
+
+Caso 2) Inserción de una hoja derecha en el subarbol derecho (der - der):
+
+    Rotación simple a la izquierda
+
+    Paso 1: sustituir R por Der, a la der pongo el hijo derecho de der, y a su izquierda pongo R.
+
+    Paso 2: R va a tener a hijo izquierdo a su propio hijo izquierdo, y a su hijo der va a hacer el hijo izquierd
+
+Caso 3) Inserción de una hoja derecha en el subarbol izquierdo (izq - der):
+
+    Rotación doble
+
+    Paso 1: se lleva la raiz del nodo desbalanceado al nodo izquierdo inmediato , se
+    redefine izq y der y aplico caso 2
+
+    Paso R: se devuelve el nodo R al paso original, colocando izq y der en su posicion original y aplico
+    caso 1
+
+    c:\Users\tomyr\Downloads\Quick Share\IMG_20250529_114812_421.jpg
+
+Caso 4) Insercion de una hoja izquierda en el subarbol derecho (der - izq):
+
+    Rotacion doble
+
+    Paso 1: se lleva la raiz del nodo desbalanceado al nodo derecho inmediato, se redefine
+    izq y der y aplico caso 1.
+
+    Paso 2: Se devuelve el nodo R al desbalanceado original, coloco izq y der en su posicion inicial y
+    aplico caso 2
+
+    c:\Users\tomyr\Downloads\Quick Share\IMG_20250529_120144_561.jpg
+
+    c:\Users\tomyr\Downloads\Quick Share\IMG_20250529_120834_229.jpg
+
+
+TAREA
+
+Secuencia:
+
+30-20-105-106-70-12-24-17-10-03-46-82-48-40 HECHA
+
+50-80-40-90-60-30-20-10
+
+L-E-N-C-B-F-Q-P-M-R-S-A-D
+
