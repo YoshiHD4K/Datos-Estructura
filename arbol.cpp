@@ -80,9 +80,9 @@ main()
 }
 int calcularAltura(arbol *rec)
 {
-    if (raiz == NULL)
+    if (rec == NULL)
         return -1;
-    return 1 + max(calcularAltura(raiz->izq), calcularAltura(raiz->der));
+    return 1 + max(calcularAltura(rec->izq), calcularAltura(rec->der));
 }
 void imprimirArbol(arbol *raiz, int espacios)
 {
