@@ -74,7 +74,6 @@ int NumVeces;
         imprimirArbol(raiz, 0);
         system("pause");
         break;
-    
     default:
         break;
     }
