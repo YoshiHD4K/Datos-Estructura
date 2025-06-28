@@ -22,11 +22,11 @@ int altura(arbol *nodo);
 int factorEquilibrio(arbol *nodo);
 void actualizarFactoresEquilibrio(arbol *nodo);
 bool esAVL(arbol *nodo);
-bool existe(arbol *raiz, int valor); // Declaración de la función existe
-void rotacion(arbol *&nodo);          // Declaración de la función de rotacion
-void rotarIzquierda(arbol *&rec);   // Declaración de la función de rotación izquierda
-void rotarDerecha(arbol *&rec);     // Declaración de la función de rotación derecha
-void balancearHastaAVL(arbol *&raiz); // Declaración de la función de balanceo
+bool existe(arbol *raiz, int valor);      // Declaración de la función existe
+void rotacion(arbol *&rec, arbol *&raiz); // Declaración de la función de rotacion
+void rotarIzquierda(arbol *&rec);         // Declaración de la función de rotación izquierda
+void rotarDerecha(arbol *&rec);           // Declaración de la función de rotación derecha
+void balancearHastaAVL(arbol *&raiz);     // Declaración de la función de balanceo
 
 int main()
 {
@@ -243,46 +243,64 @@ bool existe(arbol *raiz, int valor)
 }
 
 // Función para identificar el tipo de rotación necesaria en un nodo
-void rotacion(arbol *&rec)
+void rotacion(arbol *&rec, arbol *&raiz)
 {
     if (rec == NULL)
     {
         return;
     }
 
+    actualizarFactoresEquilibrio(raiz); // Asegurarse de que los factores de equilibrio estén actualizados
     // Recursivamente para los hijos
-    rotacion(rec->izq);
-    rotacion(rec->der);
+    rotacion(rec->izq, raiz);
+    rotacion(rec->der, raiz);
+
 
     // Caso I Izquierda-Izquierda
     if (rec->factorEquilibrio < -1 && rec->izq && rec->izq->factorEquilibrio <= 0)
-    {
+    {   
         cout << "Rotación Izquierda-Izquierda en nodo: " << rec->dato << endl;
-        rotarDerecha(rec); // Agregar rotación a la derecha
-        actualizarFactoresEquilibrio(rec); // Actualiza factores de equilibrio después de rotar
+        rotarDerecha(rec);                  // Agregar rotación a la derecha
+        cout << "CASO I: ARBOL RESULTANTE DESPUES DE ROTACION" << endl;
+        imprimirArbol(raiz, 0);            // Imprimir el árbol después de la rotación
+        cout << endl;
+        cout << "-----------------------------------------------------------------------" << endl;
+        actualizarFactoresEquilibrio(raiz); // Actualiza factores de equilibrio después de rotar
     }
     // Caso II Derecha-Derecha
-    else if (rec->factorEquilibrio > 1 && rec->der && rec->der->factorEquilibrio >= 0)
+    else if (rec->factorEquilibrio > 1 && rec->der && rec->der->factorEquilibrio > 0)
     {
         cout << "Rotación Derecha-Derecha en nodo: " << rec->dato << endl;
-        rotarIzquierda(rec); // Agregar rotación a la izquierda
-        actualizarFactoresEquilibrio(rec); // Actualiza factores de equilibrio después de rotar
+        rotarIzquierda(rec);                // Agregar rotación a la izquierda
+        cout << "CASO II: ARBOL RESULTANTE DESPUES DE ROTACION" << endl;
+        imprimirArbol(raiz, 0);            // Imprimir el árbol después de la rotación
+        cout << endl;
+        cout << "-----------------------------------------------------------------------" << endl;
+        actualizarFactoresEquilibrio(raiz); // Actualiza factores de equilibrio después de rotar
     }
     // Caso III Izquierda-Derecha
     else if (rec->factorEquilibrio < -1 && rec->izq && rec->izq->factorEquilibrio > 0)
     {
         cout << "Rotación Izquierda-Derecha en nodo: " << rec->dato << endl;
-        rotarIzquierda(rec->izq);          // Primero rota a la izquierda el hijo izquierdo
-        rotarDerecha(rec);                 // Luego rota a la derecha el nodo actual
-        actualizarFactoresEquilibrio(rec); // Actualiza factores de equilibrio
+        rotarIzquierda(rec->izq);           // Primero rota a la izquierda el hijo izquierdo
+        rotarDerecha(rec);                  // Luego rota a la derecha el nodo actual
+        cout << "CASO III: ARBOL RESULTANTE DESPUES DE ROTACION" << endl;
+        imprimirArbol(raiz, 0);            // Imprimir el árbol después de la rotación
+        cout << endl;
+        cout << "-----------------------------------------------------------------------" << endl;
+        actualizarFactoresEquilibrio(raiz); // Actualiza factores de equilibrio
     }
     // Caso IV Derecha-Izquierda
-    else if (rec->factorEquilibrio > 1 && rec->der && rec->der->factorEquilibrio < 0)
+    else if (rec->factorEquilibrio > 1 && rec->der && rec->der->factorEquilibrio <= 0)
     {
         cout << "Rotación Derecha-Izquierda en nodo: " << rec->dato << endl;
-        rotarDerecha(rec->der);            // Primero rota a la derecha el hijo derecho
-        rotarIzquierda(rec);               // Luego rota a la izquierda el nodo actual
-        actualizarFactoresEquilibrio(rec); // Actualiza factores de equilibrio
+        rotarDerecha(rec->der);             // Primero rota a la derecha el hijo derecho
+        rotarIzquierda(rec);                // Luego rota a la izquierda el nodo actual
+        cout << "CASO IV: ARBOL RESULTANTE DESPUES DE ROTACION" << endl;
+        imprimirArbol(raiz, 0);            // Imprimir el árbol después de la rotación
+        cout << endl;
+        cout << "-----------------------------------------------------------------------" << endl;
+        actualizarFactoresEquilibrio(raiz); // Actualiza factores de equilibrio
     }
     return;
 }
@@ -316,9 +334,11 @@ void rotarDerecha(arbol *&rec)
     rec = nuevoPadre;
 }
 
-void balancearHastaAVL(arbol *&raiz) {
-    do {
-        rotacion(raiz); // Aplica rotaciones necesarias en todo el árbol
+void balancearHastaAVL(arbol *&raiz)
+{
+    do
+    {
+        rotacion(raiz, raiz);               // Aplica rotaciones necesarias en todo el árbol
         actualizarFactoresEquilibrio(raiz); // Actualiza factores después de rotar
     } while (!esAVL(raiz)); // Repite hasta que el árbol sea AVL
 }
